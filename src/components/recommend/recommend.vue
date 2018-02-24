@@ -35,7 +35,7 @@
   </div>
 </template>
 
-// <script type="text/ecmascript-6">
+<script type="text/ecmascript-6">
 //   import Slider from 'base/slider/slider'
 //   import Loading from 'base/loading/loading'
 //   import Scroll from 'base/scroll/scroll'
@@ -100,7 +100,7 @@
 //       Scroll
 //     }
 //   }
-// </script>
+</script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
   @import "~common/stylus/variable"

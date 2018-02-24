@@ -23,7 +23,7 @@
   </div>
 </template>
 
-// <script type="text/ecmascript-6">
+<script type="text/ecmascript-6">
 //   import Scroll from 'base/scroll/scroll'
 //   import Loading from 'base/loading/loading'
 //   import {getTopList} from 'api/rank'
@@ -77,7 +77,7 @@
 //       Loading
 //     }
 //   }
-// </script>
+</script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
   @import "~common/stylus/variable"
