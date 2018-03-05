@@ -2,7 +2,7 @@
   <div class="recommend" ref="recommend">
     <!-- <scroll ref="scroll" class="recommend-content" :data="discList"> -->
       <div>
-         <!-- <div v-if="recommends.length" class="slider-wrapper" ref="sliderWrapper"> -->
+        <div v-if="recommends.length" class="slider-wrapper" ref="sliderWrapper">
           <slider>
             <div v-for="item in recommends" :key="item.id">
               <a :href="item.linkUrl">
@@ -10,7 +10,7 @@
               </a>
             </div>
           </slider>
-        <!-- </div> -->
+        </div>
         <div class="recommend-list">
           <h1 class="list-title">热门歌单推荐</h1>
           <ul>
