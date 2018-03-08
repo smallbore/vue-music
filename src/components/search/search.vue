@@ -1,11 +1,11 @@
 <template>
   <div class="search">
     search
-    <!-- <div class="search-box-wrapper">
-      <search-box ref="searchBox" @query="onQueryChange"></search-box>
+    <div class="search-box-wrapper">
+      <search-box ref="searchBox" ></search-box>
     </div>
-    <div ref="shortcutWrapper" class="shortcut-wrapper" v-show="!query">
-      <scroll :refreshDelay="refreshDelay" ref="shortcut" class="shortcut" :data="shortcut">
+    <div ref="shortcutWrapper" class="shortcut-wrapper">
+      <scroll ref="shortcut" class="shortcut" :data="shortcut">
         <div>
           <div class="hot-key">
             <h1 class="title">热门搜索</h1>
@@ -18,90 +18,90 @@
           <div class="search-history" v-show="searchHistory.length">
             <h1 class="title">
               <span class="text">搜索历史</span>
-              <span @click="showConfirm" class="clear">
+              <span class="clear">
                 <i class="icon-clear"></i>
               </span>
             </h1>
-            <search-list @delete="deleteSearchHistory" @select="addQuery" :searches="searchHistory"></search-list>
+            <search-list></search-list>
           </div>
         </div>
       </scroll>
     </div>
-    <div class="search-result" v-show="query" ref="searchResult">
-      <suggest @listScroll="blurInput" @select="saveSearch" ref="suggest" :query="query"></suggest>
+    <div class="search-result" ref="searchResult">
+      <suggest ref="suggest"></suggest>
     </div>
-    <confirm ref="confirm" @confirm="clearSearchHistory" text="是否清空所有搜索历史" confirmBtnText="清空"></confirm>
-    <router-view></router-view> -->
+    <confirm ref="confirm"  text="是否清空所有搜索历史" confirmBtnText="清空"></confirm>
+    <!-- <router-view></router-view> -->
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-//   import SearchBox from 'base/search-box/search-box'
-//   import SearchList from 'base/search-list/search-list'
-//   import Scroll from 'base/scroll/scroll'
-//   import Confirm from 'base/confirm/confirm'
-//   import Suggest from 'components/suggest/suggest'
-//   import {getHotKey} from 'api/search'
-//   import {ERR_OK} from 'api/config'
+import SearchBox from 'base/search-box/search-box'
+import SearchList from 'base/search-list/search-list'
+import Scroll from 'base/scroll/scroll'
+import Confirm from 'base/confirm/confirm'
+import Suggest from 'components/suggest/suggest'
+import {getHotKey} from 'api/search'
+import {ERR_OK} from 'api/config'
 //   import {playlistMixin, searchMixin} from 'common/js/mixin'
 //   import {mapActions} from 'vuex'
 
-//   export default {
-//     mixins: [playlistMixin, searchMixin],
-//     data() {
-//       return {
-//         hotKey: []
-//       }
-//     },
-//     computed: {
-//       shortcut() {
-//         return this.hotKey.concat(this.searchHistory)
-//       }
-//     },
-//     created() {
-//       this._getHotKey()
-//     },
-//     methods: {
-//       handlePlaylist(playlist) {
-//         const bottom = playlist.length > 0 ? '60px' : ''
+export default {
+  // mixins: [playlistMixin, searchMixin],
+  data() {
+    return {
+      hotKey: []
+    }
+  },
+  computed: {
+    // shortcut() {
+    //   return this.hotKey.concat(this.searchHistory)
+    // }
+  },
+  created() {
+    this._getHotKey()
+  },
+  methods: {
+    // handlePlaylist(playlist) {
+    //   const bottom = playlist.length > 0 ? '60px' : ''
 
-//         this.$refs.searchResult.style.bottom = bottom
-//         this.$refs.suggest.refresh()
+    //   this.$refs.searchResult.style.bottom = bottom
+    //   this.$refs.suggest.refresh()
 
-//         this.$refs.shortcutWrapper.style.bottom = bottom
-//         this.$refs.shortcut.refresh()
-//       },
-//       showConfirm() {
-//         this.$refs.confirm.show()
-//       },
-//       _getHotKey() {
-//         getHotKey().then((res) => {
-//           if (res.code === ERR_OK) {
-//             this.hotKey = res.data.hotkey.slice(0, 10)
-//           }
-//         })
-//       },
-//       ...mapActions([
-//         'clearSearchHistory'
-//       ])
-//     },
-//     watch: {
-//       query(newQuery) {
-//         if (!newQuery) {
-//           setTimeout(() => {
-//             this.$refs.shortcut.refresh()
-//           }, 20)
-//         }
-//       }
-//     },
-//     components: {
-//       SearchBox,
-//       SearchList,
-//       Scroll,
-//       Confirm,
-//       Suggest
-//     }
-//   }
+    //   this.$refs.shortcutWrapper.style.bottom = bottom
+    //   this.$refs.shortcut.refresh()
+    // },
+    showConfirm() {
+      this.$refs.confirm.show()
+    },
+    _getHotKey() {
+      getHotKey().then((res) => {
+        if (res.code === ERR_OK) {
+          this.hotKey = res.data.hotkey.slice(0, 10)
+        }
+      })
+    },
+    // ...mapActions([
+    //   'clearSearchHistory'
+    // ])
+  },
+  // watch: {
+  //   query(newQuery) {
+  //     if (!newQuery) {
+  //       setTimeout(() => {
+  //         this.$refs.shortcut.refresh()
+  //       }, 20)
+  //     }
+  //   }
+  // },
+  components: {
+    SearchBox,
+    SearchList,
+    Scroll,
+    Confirm,
+    Suggest
+  }
+}
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">

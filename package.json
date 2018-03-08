@@ -20,6 +20,7 @@
     "axios": "^0.16.1",
     "better-scroll": "^0.1.15",
     "jsonp": "0.2.1",
+    "js-base64": "^2.1.9",
     "vue-lazyload": "1.0.3"
   },
   "devDependencies": {
