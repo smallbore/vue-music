@@ -49,22 +49,23 @@
     box-sizing: border-box
     width: 100%
     padding: 0 6px
-    height: 40px
-    background: $color-highlight-background
+    height: 36px
+    background: $color-highlight-smallbg
     border-radius: 6px
     .icon-search
       font-size: 24px
-      color: $color-background
+      color: $color-text-l
     .box
       flex: 1
       margin: 0 5px
       line-height: 18px
-      background: $color-highlight-background
-      color: $color-text
+      background: $color-highlight-smallbg
+      color: $color-text-ll
       font-size: $font-size-medium
+      padding:2px;
       &::placeholder
         color: $color-text-d
     .icon-dismiss
       font-size: 16px
-      color: $color-background
+      color: $color-text-l
 </style>

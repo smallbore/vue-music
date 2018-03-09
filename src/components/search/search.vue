@@ -1,11 +1,10 @@
 <template>
   <div class="search">
-    search
     <div class="search-box-wrapper">
       <search-box ref="searchBox" ></search-box>
     </div>
     <div ref="shortcutWrapper" class="shortcut-wrapper">
-      <scroll ref="shortcut" class="shortcut" :data="shortcut">
+      <scroll ref="shortcut" class="shortcut">
         <div>
           <div class="hot-key">
             <h1 class="title">热门搜索</h1>
@@ -15,7 +14,7 @@
               </li>
             </ul>
           </div>
-          <div class="search-history" v-show="searchHistory.length">
+          <!-- <div class="search-history" v-show="searchHistory.length">
             <h1 class="title">
               <span class="text">搜索历史</span>
               <span class="clear">
@@ -23,24 +22,24 @@
               </span>
             </h1>
             <search-list></search-list>
-          </div>
+          </div> -->
         </div>
       </scroll>
     </div>
-    <div class="search-result" ref="searchResult">
+    <!-- <div class="search-result" ref="searchResult">
       <suggest ref="suggest"></suggest>
     </div>
-    <confirm ref="confirm"  text="是否清空所有搜索历史" confirmBtnText="清空"></confirm>
+    <confirm ref="confirm"  text="是否清空所有搜索历史" confirmBtnText="清空"></confirm> -->
     <!-- <router-view></router-view> -->
   </div>
 </template>
 
 <script type="text/ecmascript-6">
 import SearchBox from 'base/search-box/search-box'
-import SearchList from 'base/search-list/search-list'
+// import SearchList from 'base/search-list/search-list'
 import Scroll from 'base/scroll/scroll'
-import Confirm from 'base/confirm/confirm'
-import Suggest from 'components/suggest/suggest'
+// import Confirm from 'base/confirm/confirm'
+// import Suggest from 'components/suggest/suggest'
 import {getHotKey} from 'api/search'
 import {ERR_OK} from 'api/config'
 //   import {playlistMixin, searchMixin} from 'common/js/mixin'
@@ -74,6 +73,9 @@ export default {
     showConfirm() {
       this.$refs.confirm.show()
     },
+    addQuery(query) {
+      this.$refs.searchBox.setQuery(query)
+    },
     _getHotKey() {
       getHotKey().then((res) => {
         if (res.code === ERR_OK) {
@@ -96,10 +98,10 @@ export default {
   // },
   components: {
     SearchBox,
-    SearchList,
-    Scroll,
-    Confirm,
-    Suggest
+    // SearchList,
+    Scroll
+    // Confirm,
+    // Suggest
   }
 }
 </script>
@@ -130,9 +132,9 @@ export default {
             padding: 5px 10px
             margin: 0 20px 10px 0
             border-radius: 6px
-            background: $color-highlight-background
+            background: $color-highlight-smallbg
             font-size: $font-size-medium
-            color: $color-text-d
+            color: $color-text-l
         .search-history
           position: relative
           margin: 0 20px
